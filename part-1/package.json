@@ -1,0 +1,11 @@
+{
+  "name": "part-1",
+  "version": "1.0.0",
+  "description": "part one",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Yaseen Hussain",
+  "license": "ISC"
+}
