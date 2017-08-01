@@ -35,8 +35,7 @@ app.get('/api/days/:day', (request, response) => {
       + `${response.statusCode}` 
     )
   } else {
-    response.set('Content-Type', 'application/text') // test content-type
-    console.log('reponse', response.set)    
+    response.set('Content-Type', 'application/text') // test content-type   
     response.status(400).send(
       'request: GET '
       + `${request.path}`
@@ -51,7 +50,27 @@ app.get('/api/days/:day', (request, response) => {
 })
 
 app.post('/api/array/concat', (request, response) => {
+  const { array1, array2 } = request.body
+  const resultArray = array1.concat(array2)
 
+  if(Array.isArray(resultArray)) {
+    // response.set('Content-Type', 'application/json') 
+    response.json({
+      'request': 'POST ' + request.path,
+      'request body params': request.body,
+      'request content type': request.rawHeaders[15],
+      'response': {'result': resultArray}
+    })
+  } else { 
+    // response.set('Content-Type', 'application/json')    
+    response.status(400).json({
+      'request': 'POST ' + request.path,
+      'request body params': request.body,
+      'request content type': request.rawHeaders[15],
+      'response status code': response.statusCode,
+      'response': {'error': 'Input data should be of type Array'}
+    })
+  }
 })
 
 
