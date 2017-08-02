@@ -50,11 +50,12 @@ app.get('/api/days/:day', (request, response) => {
 })
 
 app.post('/api/array/concat', (request, response) => {
+  response.set('Content-Type', 'application/json') 
+  
   const { array1, array2 } = request.body
   const resultArray = array1.concat(array2)
 
   if(Array.isArray(resultArray)) {
-    // response.set('Content-Type', 'application/json') 
     response.json({
       'request': 'POST ' + request.path,
       'request body params': request.body,
@@ -62,7 +63,6 @@ app.post('/api/array/concat', (request, response) => {
       'response': {'result': resultArray}
     })
   } else { 
-    // response.set('Content-Type', 'application/json')    
     response.status(400).json({
       'request': 'POST ' + request.path,
       'request body params': request.body,
@@ -73,9 +73,10 @@ app.post('/api/array/concat', (request, response) => {
   }
 })
 
-
 app.listen(3000, ( error, cb ) => {
   if(error) throw error
     console.log('Listening on port 3000!')
 })
+
+module.exports = app
 
