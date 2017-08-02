@@ -18,7 +18,11 @@ const commandLine = () => {
     })
   } else if(searchByCategory === 'real-shoppers') {
     allShoppers()
-  }
+      .then(results => {
+        createShoppersTable(results)
+        process.exit(0)
+      })
+    }
 }
 
 commandLine()
@@ -41,9 +45,9 @@ const createProductsTable = (results) => {
 }
 
 const createShoppersTable = (results) => { 
-    console.log('|--------------+---------|\n| Product Name | Section |\n|--------------+---------|')
+    console.log('|--------------+------------------|\n| Shopper Name | number of orders |\n|--------------+------------------|')
       for (values of results) {
-      console.log("|", values.name, "       |", values.section, "   |");
+      console.log("|", values.shopper, "       |", values.sum, "              |");
       }
-    console.log('|--------------+---------|')
+    console.log('|--------------+------------------|')
 }
