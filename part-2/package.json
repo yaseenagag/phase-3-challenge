@@ -2,10 +2,16 @@
   "name": "part-2",
   "version": "1.0.0",
   "description": "part two",
-  "main": "index.js",
+  "main": "database.js",
   "scripts": {
-    "test": "mocha"
+    "db:create": "createdb grocery_store",
+    "test": "mocha database_test.js"
   },
   "author": "Yaseen Hussain",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.0",
+    "mocha": "^3.5.0",
+    "pg-promise": "^6.3.6"
+  }
 }
