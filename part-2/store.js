@@ -1,4 +1,4 @@
-const { getItemsBySection, shopperOrders, allShoppers } = require('./database')
+const { items, getItemsBySection, shopperOrders, allShoppers } = require('./database')
 
 const commandLine = () => {
   const searchByCategory = process.argv[2]
